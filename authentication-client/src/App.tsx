@@ -1,14 +1,22 @@
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
-import { Main } from './components/Main';
 import { Footer } from './components/Footer';
+import { SignUp } from './features/sign-up/SignUp';
+import { SignIn } from './features/sign-in/SignIn';
 
 function App() {
   return (
-    <div className="App">
+    <HashRouter>
       <Header />
-      <Main />
+      <main>
+        <Routes>
+          <Route index element={<SignIn />} />
+          <Route path='/sign-up' element={<SignUp />} />
+          <Route path='/sign-in' element={<SignIn />} />
+        </Routes>
+      </main>
       <Footer />
-    </div>
+    </HashRouter>
   );
 }
 
