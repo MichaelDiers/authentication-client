@@ -1,10 +1,11 @@
 import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Email } from '../../components/Email';
 
 export function ForgotPassword() {
-  const [email, setEmail] = useState('');
+  const { email: emailParam } = useParams();
+  const [email, setEmail] = useState(emailParam || '');
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,11 +27,11 @@ export function ForgotPassword() {
         <div className='links-tupple'>
           <Link
             className='underline'
-            to='/sign-up'
+            to={`/sign-up/${email}`}
           >Create Account</Link>
           <Link
             className='underline'
-            to='/sign-in'
+            to={`/sign-in/${email}`}
           >Sign In</Link>
         </div>
       </form>

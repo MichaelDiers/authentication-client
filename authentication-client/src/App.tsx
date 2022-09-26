@@ -15,10 +15,14 @@ function App() {
           <Routes>
             <Route index element={<SignIn />} />
             <Route path='/sign-up' element={<SignUp />} />
+            <Route path='/sign-up/:email' element={<SignUp />} />
             <Route path='/sign-in' element={<SignIn />} />
+            <Route path='/sign-in/:email' element={<SignIn />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
+            <Route path='/forgot-password/:email' element={<ForgotPassword />} />
             <Route path='/reset-password' element={<ResetPassword />} />
-            <Route path='/reset-password/:uuid' element={<ResetPassword />} />
+            <Route path='/reset-password/:email' element={<ResetPassword />} />
+            <Route path='/reset-password/:email/:uuid' element={<ResetPassword />} />
           </Routes>
         </main>
         <Footer />

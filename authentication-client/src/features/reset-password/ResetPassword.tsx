@@ -1,14 +1,18 @@
 import { FormEvent, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Email } from '../../components/Email';
 import { Password } from '../../components/Password';
 import { Uuid } from '../../components/Uuid';
 
 export function ResetPassword() {
-  const [searchParams] = useSearchParams();
-  const [email, setEmail] = useState('');
-  const [uuid, setUuid] = useState(searchParams.get('uuid') || '');
+  const {
+    email: emailParam,
+    uuid: uuidParam,
+  } = useParams();
+
+  const [email, setEmail] = useState(emailParam || '');
+  const [uuid, setUuid] = useState(uuidParam || '');
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
 
@@ -43,11 +47,11 @@ export function ResetPassword() {
         <div className='links-tupple'>
           <Link
             className='underline'
-            to='/sign-up'
+            to={`/sign-up/${email}`}
           >Create Account</Link>
           <Link
             className='underline'
-            to='/sign-in'
+            to={`/sign-in/${email}`}
           >Sign In</Link>
         </div>
       </form>

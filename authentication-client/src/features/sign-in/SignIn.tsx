@@ -1,13 +1,15 @@
-// https://www.youtube.com/watch?v=cxm5bCCa9OA
 import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Email } from '../../components/Email';
 import { Password } from '../../components/Password';
 
 export function SignIn() {
-  const [email, setEmail] = useState('');
+  const { email: emailParam } = useParams();
+
+  const [email, setEmail] = useState(emailParam || '');
   const [password, setPassword] = useState('');
+
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(email, password);
@@ -31,11 +33,11 @@ export function SignIn() {
         <div className='links-tupple'>
           <Link
             className='underline'
-            to='/sign-up'
+            to={`/sign-up/${email}`}
           >Create Account</Link>
           <Link
             className='underline'
-            to='/forgot-password'
+            to={`/forgot-password/${email}`}
           >Forgot Password?</Link>
         </div>
       </form>

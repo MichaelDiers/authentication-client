@@ -1,11 +1,13 @@
 import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { Email } from '../../components/Email';
 import { Password } from '../../components/Password';
 
 export function SignUp() {
-  const [email, setEmail] = useState('');
+  const { email: emailParam } = useParams();
+
+  const [email, setEmail] = useState(emailParam || '');
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
 
@@ -35,7 +37,7 @@ export function SignUp() {
         <div className='links-tupple'>
           <Link
             className='underline'
-            to='/sign-in'
+            to={`/sign-in/${email}`}
           >I have an account</Link>
         </div>
       </form>
