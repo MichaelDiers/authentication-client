@@ -1,5 +1,5 @@
 @mixin rotating-circle-loader($name: 'rotating-circle-loader',
-  $size: 7vw,
+$size: 7vw,
   $overlay-color: rgba(26, 24, 24, 0.8),
   $color-primary: #0e0eec,
   $color-secondary: rgb(138, 138, 255),
@@ -51,15 +51,16 @@
 }
 
 @mixin theme($name: null,
-  $color,
+$color,
   $background,
   $background-image: null,
 ) {
   @if ($name) {
     .app.#{$name} {
-      color: $color;
       background: $background;
+      color: $color;
 
+      /* stylelint-disable-next-line max-nesting-depth */
       @if ($background-image) {
         background-image: $background-image;
       }
@@ -67,37 +68,39 @@
 
     .#{$name} {
       $params: ('name': $name,
-        'color': $color,
-        'background': $background,
-        'background-image': $background-image,
-      );
+      'color': $color,
+      'background': $background,
+      'background-image': $background-image,
+    );
       @include theme-helper($params...);
     }
   }
 
   @else {
     .app {
-      color: $color;
       background: $background;
+      color: $color;
 
+      /* stylelint-disable-next-line max-nesting-depth */
       @if ($background-image) {
         background-image: $background-image;
       }
     }
 
+    /* stylelint-disable-next-line order/order */
     $params: (
       'name': $name,
       'color': $color,
       'background': $background,
       'background-image': $background-image,
     );
-  @include theme-helper($params...);
-}
+    @include theme-helper($params...);
+  }
 }
 
 
 @mixin theme-helper($name: null,
-  $color,
+$color,
   $background,
   $background-image: null,
 ) {
@@ -110,8 +113,8 @@
   }
 
   .button {
-    box-shadow: 0 0 10px $color;
     border: 1px solid $background;
+    box-shadow: 0 0 10px $color;
   }
 
   .button:focus,
