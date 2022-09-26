@@ -1,0 +1,12 @@
+.links-tupple {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.links-tupple :first-child {
+  justify-self: start;
+}
+
+.links-tupple :last-child {
+  justify-self: end;
+}

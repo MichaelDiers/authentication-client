@@ -1,0 +1,26 @@
+.form-element {
+  border: 2px solid;
+  border-radius: 5px;
+  margin: 0;
+  outline: 2px solid;
+  padding: 15px;
+  position: relative;
+  transition: all 1s;
+}
+
+.form-element:nth-child(odd) {
+  z-index: 2;
+}
+
+.form-element:nth-child(even) {
+  transform: translateY(-100%);
+  z-index: 3;
+}
+
+.form-element:nth-child(even):focus,
+.form-element:nth-child(even):hover,
+.form-element:nth-child(odd):focus+.form-element,
+.form-element:nth-child(odd):hover+.form-element,
+.form-element:nth-child(odd):not(:placeholder-shown)+.form-element {
+  transform: translateY(-175%);
+}

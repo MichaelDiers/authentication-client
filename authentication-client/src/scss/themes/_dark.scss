@@ -1,0 +1,6 @@
+$theme-params: (
+  'background': $dark-theme-background,
+  'color': $dark-theme-color,
+);
+
+@include theme($theme-params...);

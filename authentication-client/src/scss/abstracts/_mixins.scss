@@ -1,0 +1,169 @@
+@mixin rotating-circle-loader($name: 'rotating-circle-loader',
+  $size: 7vw,
+  $overlay-color: rgba(26, 24, 24, 0.8),
+  $color-primary: #0e0eec,
+  $color-secondary: rgb(138, 138, 255),
+  $z-index: 100,
+  $cursor: wait,
+) {
+  .#{$name} {
+    background-color: $overlay-color;
+    bottom: 0;
+    display: none;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: $z-index;
+  }
+
+  .#{$name}::after {
+    animation: #{$name}-animation 1s infinite 0.1s;
+    border: calc($size/10) solid $color-secondary;
+    border-radius: 50%;
+    border-top-color: $color-primary;
+    content: '';
+    height: $size;
+    left: calc(50% - ($size / 2));
+    position: absolute;
+    top: calc(50% - ($size / 2));
+    width: $size;
+    z-index: $z-index + 1;
+  }
+
+  .#{$name}.show {
+    cursor: $cursor;
+    display: block;
+    opacity: 1;
+  }
+
+  @keyframes #{$name}-animation {
+    0% {
+      transform: rotateZ(0);
+    }
+
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+}
+
+@mixin theme($name: null,
+  $color,
+  $background,
+  $background-image: null,
+) {
+  @if ($name) {
+    .app.#{$name} {
+      color: $color;
+      background: $background;
+
+      @if ($background-image) {
+        background-image: $background-image;
+      }
+    }
+
+    .#{$name} {
+      $params: ('name': $name,
+        'color': $color,
+        'background': $background,
+        'background-image': $background-image,
+      );
+      @include theme-helper($params...);
+    }
+  }
+
+  @else {
+    .app {
+      color: $color;
+      background: $background;
+
+      @if ($background-image) {
+        background-image: $background-image;
+      }
+    }
+
+    $params: (
+      'name': $name,
+      'color': $color,
+      'background': $background,
+      'background-image': $background-image,
+    );
+  @include theme-helper($params...);
+}
+}
+
+
+@mixin theme-helper($name: null,
+  $color,
+  $background,
+  $background-image: null,
+) {
+  .button {
+    background: $color;
+    border: 0;
+    border-radius: 5px;
+    color: $background;
+    transition: all 1s;
+  }
+
+  .button {
+    box-shadow: 0 0 10px $color;
+    border: 1px solid $background;
+  }
+
+  .button:focus,
+  .button:hover {
+    background: $background;
+    box-shadow: 0 0 30px $color;
+    color: $color;
+  }
+
+  .form {
+    border: 1px solid $color;
+    border-radius: 5px;
+  }
+
+  .form-element {
+    background: $color;
+    border-color: transparent;
+    color: $background;
+    outline-color: transparent;
+  }
+
+  .form-element:nth-child(odd):focus {
+    outline-color: $color;
+  }
+
+  .form-element:nth-child(even) {
+    background: transparent;
+  }
+
+  .form-element:nth-child(odd):focus,
+  .form-element:nth-child(odd):hover {
+    background: $background;
+    border-color: $color;
+    color: $color;
+  }
+
+  .form-element:nth-child(even):focus,
+  .form-element:nth-child(even):hover,
+  .form-element:nth-child(odd):focus+.form-element,
+  .form-element:nth-child(odd):hover+.form-element,
+  .form-element:nth-child(odd):not(:placeholder-shown)+.form-element {
+    color: $color;
+  }
+
+  a {
+    background: transparent;
+    border-radius: 5px;
+    color: $color;
+  }
+
+  .underline::after,
+  .underline::before {
+    border-color: $dark-theme-color;
+  }
+}

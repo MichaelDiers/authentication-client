@@ -1,0 +1,27 @@
+.underline {
+  position: relative;
+}
+
+.underline::after,
+.underline::before {
+  border-bottom: 1px solid;
+  content: '';
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: width 1s;
+  width: 0;
+}
+
+.underline::after {
+  left: 0;
+}
+
+.underline::before {
+  right: 0;
+}
+
+.underline:hover::after,
+.underline:hover::before {
+  width: 100%;
+}

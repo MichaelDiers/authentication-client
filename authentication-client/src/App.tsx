@@ -6,17 +6,19 @@ import { SignIn } from './features/sign-in/SignIn';
 
 function App() {
   return (
-    <HashRouter>
-      <Header />
-      <main>
-        <Routes>
-          <Route index element={<SignIn />} />
-          <Route path='/sign-up' element={<SignUp />} />
-          <Route path='/sign-in' element={<SignIn />} />
-        </Routes>
-      </main>
-      <Footer />
-    </HashRouter>
+    <div className='app'>
+      <HashRouter>
+        <Header />
+        <main>
+          <Routes>
+            <Route index element={<SignIn />} />
+            <Route path='/sign-up' element={<SignUp />} />
+            <Route path='/sign-in' element={<SignIn />} />
+          </Routes>
+        </main>
+        <Footer />
+      </HashRouter>
+    </div>
   );
 }
 
