@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     env:
-      REACT_APP_API_GATEWAY=${{ secrets.REACT_APP_API_GATEWAY }}
+      REACT_APP_API_GATEWAY: ${{ secrets.REACT_APP_API_GATEWAY }}
     steps:
       - uses: actions/checkout@v3
       - name: install dependencies
