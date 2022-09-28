@@ -1,6 +1,6 @@
 @mixin rotating-circle-loader($name: 'rotating-circle-loader',
 $size: 7vw,
-  $overlay-color: rgba(26, 24, 24, 0.8),
+$overlay-color: rgba(26, 24, 24, 0.8),
   $color-primary: #0e0eec,
   $color-secondary: rgb(138, 138, 255),
   $z-index: 100,
@@ -52,7 +52,7 @@ $size: 7vw,
 
 @mixin theme($name: null,
 $color,
-  $background,
+$background,
   $background-image: null,
 ) {
   @if ($name) {
@@ -101,7 +101,7 @@ $color,
 
 @mixin theme-helper($name: null,
 $color,
-  $background,
+$background,
   $background-image: null,
 ) {
   .button {

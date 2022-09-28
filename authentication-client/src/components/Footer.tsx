@@ -1,5 +1,9 @@
+import { SystemStatus } from '../features/system-status/SystemStatus';
+
 export function Footer() {
   return (
-    <footer></footer>
+    <footer>
+      <SystemStatus />
+    </footer>
   )
 }
