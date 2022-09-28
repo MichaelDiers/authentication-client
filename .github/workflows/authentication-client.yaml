@@ -16,7 +16,7 @@ jobs:
       - name: install dependencies
         run: npm install
       - name: create .env.production
-        run: echo 'REACT_APP_API_GATEWAY=${{ env.REACT_APP_API_GATEWAY }}' >> .env.production      
+        run: echo 'REACT_APP_API_GATEWAY=${{ env.REACT_APP_API_GATEWAY }}' >> ../.env.production      
       - name: install gh-pages
         run: npm install gh-pages
       - name: build
